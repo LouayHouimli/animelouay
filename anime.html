@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Anime Info</title>
+</head>
+<body>
+    <h1>Anime Info</h1>
+
+    <button onclick="goToHome()">Return Home</button>
+
+    <div id="animeDetails">
+        <!-- Anime details will be displayed here -->
+    </div>
+
+    <script>
+        function goToHome() {
+            window.location.href = "index.html";
+        }
+
+        function fetchEpisodeData(episodeID) {
+            fetch(`https://api.consumet.org/anime/gogoanime/watch/${episodeID}`)
+                .then(response => response.json())
+                .then(data => {
+                    var defaultSource = data.sources.find(source => source.quality === "default");
+
+                    if (defaultSource) {
+                        var watchURL = `watch.html?url=${encodeURIComponent(defaultSource.url)}`;
+                        window.location.href = watchURL;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching episode data:', error);
+                });
+        }
+
+        function fetchAnimeInfo() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var animeID = urlParams.get('id');
+
+            fetch(`https://api.consumet.org/anime/gogoanime/info/${animeID}`)
+                .then(response => response.json())
+                .then(data => {
+                    var animeDetails = document.getElementById("animeDetails");
+                    animeDetails.innerHTML = `
+                        <h2>${data.title}</h2>
+                        <img src="${data.image}" alt="${data.title}" style="max-width: 200px;">
+                        <p><strong>Genres:</strong> ${data.genres.join(", ")}</p>
+                        <p>${data.totalEpisodes !== undefined ? `Total Episodes: ${data.totalEpisodes}` : "Total Episodes: N/A"}</p>
+                        <p>${data.description}</p>
+                        <h3>Episodes:</h3>
+                        <ul>
+                            ${data.episodes.map(episode => `<li><a href="javascript:void(0);" onclick="fetchEpisodeData('${episode.id}')">Episode ${episode.number}</a></li>`).join("")}
+                        </ul>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error fetching anime info:', error);
+                });
+        }
+
+        fetchAnimeInfo();
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Watch Anime</title>
+    <link href="https://vjs.zencdn.net/7.2.3/video-js.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Watch Anime</h1>
+    <button onclick="goBack()">Go Back</button>
+
+    <div id="videoContainer">
+        <iframe id="hls-iframe" width="800" height="450" frameborder="0"></iframe>
+    </div>
+
+    <script>
+        var videoURL = getParameterByName('url');
+
+        var iframe = document.getElementById('hls-iframe');
+        iframe.src = `https://www.hlsplayer.org/play?url=${encodeURIComponent(videoURL)}`;
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            var results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    </script>
+</body>
+</html>
