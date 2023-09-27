@@ -75,3 +75,82 @@ a {
 a:hover {
     color: #f00; /* Change the color on hover */
 }
+
+/* Header styles for the Anime Info page */
+h1 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin: 0;
+}
+
+/* "Return Home" button styles */
+button {
+    display: block;
+    margin: 20px auto;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f00; /* Change the color on hover */
+}
+
+/* Anime details container */
+#animeDetails {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#animeDetails h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+#animeDetails img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+#animeDetails p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#animeDetails h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#animeDetails ul {
+    list-style: none;
+    padding: 0;
+}
+
+#animeDetails ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#animeDetails ul li a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#animeDetails ul li a:hover {
+    color: #f00; /* Change the color on hover */
+}
+
