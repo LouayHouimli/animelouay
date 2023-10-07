@@ -41,28 +41,37 @@
                 return; // No need to fetch if the query is empty
             }
 
-            fetch(`https://api.consumet.org/anime/gogoanime/${query}`)
-                .then(response => response.json())
-                .then(data => {
-                    // Display anime titles and genres with links from fetched data
-                    data.results.forEach(function(anime) {
-                        if (!displayedIDs.has(anime.id)) {
-                            var animeDiv = document.createElement("div");
-                            animeDiv.innerHTML = `
-                                <h2><a href="anime.html?id=${anime.id}">${anime.title}</a></h2>
-                                <img src="${anime.image}" alt="${anime.title}" style="max-width: 200px;">
-                                <p><strong>Genres:</strong> ${anime.genres ? anime.genres.join(", ") : "N/A"}</p>
-                                <p>${anime.totalEpisodes !== undefined ? `Total Episodes: ${anime.totalEpisodes}` : "Total Episodes: N/A"}</p>
-                            `;
-                            searchResults.appendChild(animeDiv);
+           fetch(`https://api.consumet.org/anime/gogoanime/${query}`)
+    .then(response => response.json())
+    .then(data => {
+        // Display anime titles and genres with links from fetched data
+        data.results.forEach(function(anime) {
+            if (!displayedIDs.has(anime.id)) {
+                // Fetch additional details including genres and total episodes
+                fetch(`https://api.consumet.org/anime/gogoanime/info/${anime.id}`)
+                    .then(response => response.json())
+                    .then(infoData => {
+                        var animeDiv = document.createElement("div");
+                        animeDiv.innerHTML = `
+                            <h2><a href="anime.html?id=${anime.id}&genres=${JSON.stringify(infoData.genres)}&totalEpisodes=${infoData.totalEpisodes || ''}">${anime.title}</a></h2>
+                            <img src="${anime.image}" alt="${anime.title}" style="max-width: 200px;">
+                         
+                            <p>${infoData.totalEpisodes !== undefined ? `Total Episodes: ${infoData.totalEpisodes}` : "Total Episodes: N/A"}</p>
+                        `;
+                        searchResults.appendChild(animeDiv);
 
-                            displayedIDs.add(anime.id);
-                        }
+                        displayedIDs.add(anime.id);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching additional anime info:', error);
                     });
-                })
-                .catch(error => {
-                    console.error('Error fetching data:', error);
-                });
+            }
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+
         }
     </script>
 </body>
