@@ -1,0 +1,187 @@
+/* Reset some default styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin: 0;
+}
+
+/* Search form styles */
+#searchForm {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#animeSearch {
+    padding: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+}
+
+/* Search results container */
+#searchResults {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Individual anime result styles */
+.anime {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.anime h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.anime img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.anime p {
+    font-size: 14px;
+    margin: 10px 0;
+}
+
+/* Link styles */
+a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #f00; /* Change the color on hover */
+}
+
+/* Header styles for the Anime Info page */
+h1 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin: 0;
+}
+
+/* "Return Home" button styles */
+button {
+    display: block;
+    margin: 20px auto;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #f00; /* Change the color on hover */
+}
+
+/* Anime details container */
+#animeDetails {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#animeDetails h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+#animeDetails img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+#animeDetails p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+#animeDetails h3 {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+#animeDetails ul {
+    list-style: none;
+    padding: 0;
+}
+
+#animeDetails ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#animeDetails ul li a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#animeDetails ul li a:hover {
+    color: #f00; /* Change the color on hover */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Header styles */
+h1 {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    margin: 0;
+}
+#videoContainer {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the iframe horizontally */
+}
+
+#hls-iframe {
+    width: 800px; /* Set the desired width of the iframe */
+    height: 450px; /* Set the desired height of the iframe */
+    margin: 0 auto; /* Center the iframe horizontally within its container */
+    display: block; /* Ensure it's a block-level element */
+}
+
